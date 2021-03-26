@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="Application_Desktop" screenid="Desktop_screen">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1280" height="720" titletext="FullFrame">
+        <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="Server::frm_empl.xfdl"/>
+      </MainFrame>
+    </Layout>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[// 전역 script에서 this는 application을 가리킨다.
+this.getToday = function(){
+	var today = new Date();
+	
+	//20210324
+	var yyyy = today.getFullYear();
+	var mm = (today.getMonth() + 1).toString().padStart(2, "0");
+	var dd = today.getDate().toString().padStart(2, "0");
+
+	return ""+yyyy+mm+dd;
+};]]></Script>
+</ADL>

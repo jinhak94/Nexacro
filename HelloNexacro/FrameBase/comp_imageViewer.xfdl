@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="comp_imageViewer" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <ImageViewer id="ImageViewer00" taborder="0" text="ImageViewer00" left="0" top="30" width="160" height="140" image="url('Images::doughnut.png')" stretch="fixaspectratio"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

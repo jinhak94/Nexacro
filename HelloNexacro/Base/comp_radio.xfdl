@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="comp_radio" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Radio id="Radio00" taborder="0" left="20" top="24" width="190" height="76" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" rowcount="1" onitemchanged="Radio00_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">M</Col>
+                <Col id="datacolumn">남자</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">F</Col>
+                <Col id="datacolumn">여자</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="Radio01" taborder="1" left="13" top="110" width="397" height="100" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" rowcount="2" columncount="3" onitemchanged="Radio01_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">americano</Col>
+                <Col id="datacolumn">아메리카노</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">caffelatte</Col>
+                <Col id="datacolumn">카페라떼</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">cafelmacchiato</Col>
+                <Col id="datacolumn">카페마끼아또</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">capuchino</Col>
+                <Col id="datacolumn">카푸치노</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">cafemocha</Col>
+                <Col id="datacolumn">카페모카</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static00" taborder="2" text="menu" left="30" top="96" width="79" height="28"/>
+        <Radio id="Radio02" taborder="3" left="14" top="217" width="136" height="43" innerdataset="ds_color" codecolumn="colorCode" datacolumn="colorDate" onitemchanged="Radio02_onitemchanged"/>
+        <Static id="Static01" taborder="4" text="Sample" left="90" top="211" width="210" height="59" font="48px/normal &quot;Gulim&quot;" textAlign="center"/>
+        <Edit id="Edit00" taborder="5" left="9" top="280" width="136" height="53" displaynulltext="color code"/>
+        <Edit id="Edit01" taborder="6" left="158" top="280" width="155" height="52" displaynulltext="color_name"/>
+        <Button id="Button00" taborder="7" text="추가" left="328" top="278" width="92" height="51" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	alert(obj.value);
+};
+
+
+
+this.Radio01_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	alert(obj.value);
+};
+
+this.Radio02_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	this.Static01.set_color(obj.value);
+};
+
+// ds_color에 data 동적추가
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var colorCode = this.Edit00.value;
+	var colorData = this.Edit01.value;
+
+	//ds_color 마지막에 행추가
+	var nRow = this.ds_color.addRow();
+	this.ds_color.setColumn(nRow, 'colorCode', colorCode);
+	this.ds_color.setColumn(nRow, 'colorDate', colorData);
+
+	//초기화
+	this.Edit00.set_value('');
+	this.Edit01.set_value('');
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_color">
+        <ColumnInfo>
+          <Column id="colorCode" type="STRING" size="256"/>
+          <Column id="colorDate" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="colorCode">red</Col>
+            <Col id="colorDate">빨강</Col>
+          </Row>
+          <Row>
+            <Col id="colorCode">yellow</Col>
+            <Col id="colorDate">노랑</Col>
+          </Row>
+          <Row>
+            <Col id="colorCode">green</Col>
+            <Col id="colorDate">초록</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="comp_static" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="Static00" taborder="0" text="Nexacro" left="24" top="26" width="170" height="62" font="12px/normal &quot;Gulim&quot;,&quot;210 다락방 R&quot;" textAlign="center" verticalAlign="middle" border="1px solid black" onmouseenter="Static00_onmouseenter" onmouseleave="Static00_onmouseleave"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Static00_onmouseenter = function(obj:nexacro.Static,e:nexacro.MouseEventInfo)
+{
+	//textDecoration
+	obj.set_textDecoration('underline');
+	obj.set_background('yellow');
+	obj.set_text('노랑...');
+};
+
+this.Static00_onmouseleave = function(obj:nexacro.Static,e:nexacro.MouseEventInfo)
+{
+	obj.set_textDecoration('none');
+	obj.set_background('white');
+	obj.set_text('Nexacro');
+};
+]]></Script>
+  </Form>
+</FDL>

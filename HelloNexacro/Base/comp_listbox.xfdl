@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="comp_listbox" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <ListBox id="ListBox00" taborder="0" left="28" top="40" width="161" height="112" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="ListBox00_onitemchanged" multiselect="true">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">menu1</Col>
+                <Col id="datacolumn">칼국수</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">menu2</Col>
+                <Col id="datacolumn">순대국</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">menu3</Col>
+                <Col id="datacolumn">닭발</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">menu4</Col>
+                <Col id="datacolumn">곱창</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">menu5</Col>
+                <Col id="datacolumn">번데기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </ListBox>
+        <Button id="Button00" taborder="1" text="선택 확인" left="193" top="37" width="115" height="46" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.ListBox00_onitemchanged = function(obj:nexacro.ListBox,e:nexacro.ItemChangeEventInfo)
+{
+	//alert(obj.value);
+};
+
+// 다중선택 요소 확인
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var ds = this.ListBox00.getInnerDataset();
+	
+	//선택된 요소의 인덱스 배열
+	var indexArr = this.ListBox00.getSelectedItems();
+	
+	//선택된 개수
+	var cnt = this.ListBox00.getSelectedCount();
+	var result = "";
+	
+	indexArr.forEach(function(index, i){
+		console.log(index, i);
+		
+		var menuCode = ds.getColumn(index, 'codecolumn');
+		var menuName = ds.getColumn(index, 'datacolumn');
+		console.log(menuCode, menuName);
+		result += menuName;
+		result += i != indexArr.length -1 ? ", " : "";
+	});
+
+	if(cnt == 0)
+		alert("선택된 메뉴가 없습니다.");
+	else
+		alert(result);
+};
+]]></Script>
+  </Form>
+</FDL>
