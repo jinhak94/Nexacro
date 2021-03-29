@@ -3,7 +3,17 @@
   <Application id="Application_Desktop" screenid="Desktop_screen">
     <Layout>
       <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1280" height="720" titletext="FullFrame">
-        <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="Server::frm_empl.xfdl"/>
+        <VFrameSet id="VFrameSet00" separatesize="50,*">
+          <Frames>
+            <ChildFrame id="TopFrame" formurl="FrameBase::frm_top.xfdl" showtitlebar="false"/>
+            <HFrameSet id="HFrameSet00" separatesize="200,*">
+              <Frames>
+                <ChildFrame id="LeftFrame" formurl="FrameBase::frm_left.xfdl" showtitlebar="false"/>
+                <ChildFrame id="WorkFrame" formurl="" showtitlebar="false"/>
+              </Frames>
+            </HFrameSet>
+          </Frames>
+        </VFrameSet>
       </MainFrame>
     </Layout>
   </Application>
@@ -17,5 +27,9 @@ this.getToday = function(){
 	var dd = today.getDate().toString().padStart(2, "0");
 
 	return ""+yyyy+mm+dd;
+};
+
+this.openFrm = function(url){
+	this.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl(url);
 };]]></Script>
 </ADL>

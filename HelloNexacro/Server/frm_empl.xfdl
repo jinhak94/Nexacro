@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frm_empl" width="1280" height="720" titletext="New Form">
+  <Form id="frm_empl" width="1280" height="720" titletext="New Form" onload="frm_empl_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Static id="Static00" taborder="0" text="KH Network" left="26" top="21" width="210" height="59" border="2px solid black" textAlign="center"/>
@@ -35,7 +35,7 @@
               <Button id="Button00" taborder="0" text="Select" left="6" top="8" width="94" height="44" onclick="Div00_Button00_onclick"/>
               <Button id="Button01" taborder="1" text="Add" left="136" top="8" width="94" height="44" onclick="Div00_Button01_onclick"/>
               <Button id="Button02" taborder="2" text="Delete" left="266" top="8" width="94" height="44" onclick="Div00_Button02_onclick"/>
-              <Button id="Button03" taborder="3" text="Save" left="396" top="8" width="94" height="44"/>
+              <Button id="Button03" taborder="3" text="Save" left="396" top="8" width="94" height="44" onclick="Div00_Button03_onclick"/>
             </Layout>
           </Layouts>
         </Div>
@@ -135,9 +135,38 @@ this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 _application.callbackFunc =function(strSvcId, nErrorCode, strErrorMsg){
 		console.log(strSvcId, nErrorCode, strErrorMsg);
 		if(nErrorCode<0) alert(strErrorMsg);
-		else alert("[" + strSvcId + "] 트랜잭션 성공!");
+		//else alert("[" + strSvcId + "] 트랜잭션 성공!");
 };
 
+
+this.Div00_Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		/*
+		Application.transaction(
+			strSvcID,		-- service id
+			strURL,			-- 요청 url
+			strInDatasets,	-- 요청 dataset serverDataset1=clientDataset1 serverDataset2=clientDataset2
+							-- 옵션 :U(갱신된 정보), :A(전체 정보), :N(삭제한 행 제외하고 보냄)
+			strOutDatasets,	-- 응답 dataset clientDataset1=serverDataset1 clientDataset2 = serverDataset2
+			strArgument,	-- 사용자 입력값
+			strCallbackFunc	-- callback함수(문자열)
+		);
+		*/
+		//nexacro.getApplication()
+		_application.transaction(
+			"empl.save",
+			"DataUrl::/empl/save",
+			"in_ds=gds_empl:A",
+			"",
+			"",
+			"callbackFunc"
+		);
+};
+
+this.frm_empl_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.Div00_Button01_onclick
+};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div01.form.MaskEdit00" propid="value" datasetid="gds_empl" columnid="EMPL_ID"/>

@@ -7,6 +7,7 @@
         <Edit id="Edit00" taborder="1" left="30" top="50" width="140" height="40"/>
         <Static id="Static00" taborder="2" text="hello" left="33" top="118" width="151" height="52"/>
       </Layout>
+      <Layout name="screen00" width="1080" height="670" screenid="screen00"/>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
 	Button00_onclick

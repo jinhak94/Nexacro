@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm_left" width="200" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="200">
+        <Grid id="Grid00" taborder="0" left="6" top="4" width="190" height="496" binddataset="gds_menu" autofittype="col" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:name" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:level"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//e.row는 현재 선택된 행의 인덱스
+	var url = _application.gds_menu.getColumn(e.row, 'url');
+	//alert(url);
+	  
+	//url이 존재할때만, 폼 시각화 요청
+	url && _application.openFrm(url);
+	
+};
+]]></Script>
+  </Form>
+</FDL>

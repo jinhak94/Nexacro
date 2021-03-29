@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm_top" width="1280" height="50" titletext="New Form">
+    <Layouts>
+      <Layout height="50" mobileorientation="landscape" width="1280">
+        <ImageViewer id="ImageViewer00" taborder="0" left="12" top="3" width="220" height="44" image="url('theme://images/img_WF_Nexacro.png')"/>
+        <Menu id="Menu00" taborder="1" left="237" top="3" width="1039" height="44" innerdataset="gds_menu" captioncolumn="name" idcolumn="id" levelcolumn="level" userdatacolumn="url" onmenuclick="Menu00_onmenuclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Menu00_onmenuclick = function(obj:nexacro.Menu,e:nexacro.MenuClickEventInfo)
+{
+	var id = e.id;
+	//alert(id);
+	
+	var url = _application.gds_menu.lookup("id", id, "url");
+	//alert(url);
+	_application.openFrm(url);
+};
+]]></Script>
+  </Form>
+</FDL>

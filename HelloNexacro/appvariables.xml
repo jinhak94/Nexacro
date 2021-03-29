@@ -134,6 +134,44 @@
         </Row>
       </Rows>
     </Dataset>
+    <Dataset id="gds_menu">
+      <ColumnInfo>
+        <Column id="id" type="STRING" size="256"/>
+        <Column id="name" type="STRING" size="256"/>
+        <Column id="level" type="STRING" size="256"/>
+        <Column id="url" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="id">1</Col>
+          <Col id="name">Component</Col>
+          <Col id="level">0</Col>
+        </Row>
+        <Row>
+          <Col id="id">1-1</Col>
+          <Col id="name">Edit</Col>
+          <Col id="level">1</Col>
+          <Col id="url">Base::comp_edit.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="id">1-2</Col>
+          <Col id="name">Calendar</Col>
+          <Col id="level">1</Col>
+          <Col id="url">Base::comp_calendar.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="id">2</Col>
+          <Col id="name">Server</Col>
+          <Col id="level">0</Col>
+        </Row>
+        <Row>
+          <Col id="id">2-1</Col>
+          <Col id="name">Transaction</Col>
+          <Col id="level">1</Col>
+          <Col id="url">Server::frm_empl.xfdl</Col>
+        </Row>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables/>
 </AppVariables>
